@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Feedbacks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/userrecord.css"/>
+</head>
+<style>
+    
+    ul.nav {
+        margin: -20px;
+        padding:0;
+        list-style:none;
+        height:70px; line-height:60px;
+        background:#FAEBEFFF; /* you can change the backgorund color here. */
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:19px;
+        font-weight: bold;
+    }
+    ul.nav li {
+         /* you can change the border color matching to your background color */
+        float:right;
+        font-family: "Lucida Console", Courier, monospace;
+    }
+    ul.nav a {
+        display:block;
+        padding:0 28px;
+        color: black;
+        text-decoration:none;
+    }
+    ul.nav a:hover,
+    ul.nav li.current a {
+        background: #333D79FF;
+        color: #FAEBEFFF;
+    }
+</style>
+<header>
+    <ul class="nav">
+    <li style="float: left;margin-top: -20px;"><a><h2>Admin</h2></a></li>
+
+        <li><a href="http://localhost:8000/userinterface" class="nav-link active">Insert User</a></li>
+      <li><a href="http://localhost:8000/displayuser" class="nav-link active">User List</a></li>
+      <li><a href="http://localhost:8000/surveyinterface" class="nav-link active">Insert Survey</a></li>
+      <li><a href="http://localhost:8000/displaysurveyrecord/" class="nav-link active">Survey List</a></li>
+      <li><a href="http://localhost:8000/displayuserfeedback/" class="nav-link active">User Feedbacks</a></li>
+        
+    </ul>
+  </header>
+</body>
+<div class="maincontainer">
+<div class="box">
+    <table class="table center">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Name(User)</th>
+                <th>Email</th>
+                <th>Answer1</th>
+                <th>Answer2</th>
+                <th>Answer3</th>
+                <th>Answer4</th>
+                
+        </tr>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in record %}
+            <tr><td data-label="Title">{{ row.title }}</td>
+                <td data-label="Name">{{ row.username }}</td>
+                <td data-label="Email">{{ row.userid }}</td>
+                <td data-label="Answer1">{{ row.a1 }}</td>
+                <td data-label="Answer2">{{ row.a2 }}</td>
+                <td data-label="Answer3">{{ row.a3 }}</td>
+                <td data-label="Answer3">{{ row.a4 }}</td>
+                    
+            </tr>
+                      {% endfor %}
+        </tbody>
+      </table>
+   
+</div>
+</div>
+</body>
+</html>

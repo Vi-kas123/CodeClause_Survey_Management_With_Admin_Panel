@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="/static/userjs.js"></script>
+
+
+	<title></title>
+</head>
+<header>
+{% include 'usernavbar.html' %}
+
+</header>
+
+<body style="background-color: #FAF0DC;">
+<br>
+<center><h3>Welcome.. {{ Userdata.firstname }} {{ Userdata.lastname }}<h3></center>
+<div style="padding: 5px; display: flex; flex-direction: row; flex-wrap: wrap;" id="surveylist">
+</div>
+
+</body>
+</html>
+
+

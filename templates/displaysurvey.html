@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <style>
+    h2{
+        color: #FAF0DC;
+    }
+    .messagestyle{
+        font-size: 25px;
+         font-weight: bold;
+           color: #FAF0DC;
+
+     }
+    .button1 input{
+        height: 50px;
+        width: 60%;
+        border-radius: 5px;
+        border: none;
+        color: #FAF0DC;;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #FF6864;
+      }
+      .button1{
+        margin: 20px 0
+      }
+      .button1 input:hover{
+        /* transform: scale(0.99); */
+       background: #FAF0DC;;
+       color: #FF6864;
+        }
+   </style>
+<body style="background-color: #FAF0DC;;">
+    {% include 'usernavbar.html' %}
+
+ <center>
+  <div class="container" style="max-width: 45%;background-color: #0B4141;height: 90vh;margin-top:30px;border-radius: 30px;">
+    
+    <div class="row">
+        <div class="col-md-12">
+          <label><h2 style="padding-top: 10px;">{{ record.q1 }}</h2></label>
+            <textarea id="a1" style="width:80%;height: 60px;" required></textarea>  
+        </div>
+        <div class="col-md-12">
+          <label><h2>{{ record.q2 }}</h2></label>
+            <textarea id="a2" style="width:80%;height: 60px;" required></textarea>  
+        </div>
+        <div class="col-md-12">
+          <label><h2>{{ record.q3 }}</h2></label>
+            <textarea id="a3" style="width:80%;height: 60px;" required></textarea>  
+        </div>
+        <div class="col-md-12">
+          <label><h2>{{ record.q4 }}</h2></label>
+            <textarea id="a4" style="width:80%;height: 60px;" required></textarea>  
+        </div>
+        
+        <div class="row">
+          <center>
+             <div class="button1">
+                  <div class="col-md-12">
+                       <input type="button" value="Submit" style="font-size: 22px;font-weight: bold" class="submitanswer" sid="{{ record.title }}">
+                  </div>
+             </div>
+          </center>
+       </div>
+       <div class="row">
+        <div class="col s12">
+          <center><span class="messagestyle" id="message">{{message}}</span></center>
+        </div>
+    </div>
+
+ 
+  </div>
+</center>
+<input id="sid" type="hidden">
+</body>
+</html>
+<script>
+    $(document).ready(function() {
+         $('.submitanswer').click(function(){
+            $('#sid').val($(this).attr('sid'))
+           $.getJSON('http://localhost:8000/submitsurveyanswer',{a1:$("#a1").val(),a2:$("#a2").val(),a3:$("#a3").val(),a4:$("#a4").val(),title: $('#sid').val()},function(data){
+           if(data.result)
+           {
+             $('#message').html("Answers Submitted Successfully..")
+           }
+           else
+           {
+             $('#message').html("Fail to submit Answers")
+           }
+        
+           })
+        
+          })
+      })
+</script>
+
+

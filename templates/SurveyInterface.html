@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/userregistration.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+
+<body>
+  {% include 'navbar.html' %}
+  <div class="container" style="max-width: 700px;width: 100%;background-color: #333D79FF;padding: 25px 30px;border-radius: 5px;box-shadow: 0 5px 10px rgba(0,0,0,0.15);margin-top: 70px;">
+    <div class="title" style="color: #FAEBEFFF">Survey Interface</div>
+    <div class="content">
+      <form action="/surveyrecordsubmit">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">title </span>
+            <input type="text" placeholder="Enter survey title" required id="title" name="title">
+          </div>
+          <div class="input-box">
+            <span class="details">Description</span>
+            <textarea id="description" style="width:100%;height: 70px;" name="description"></textarea>
+          </div>
+          <div class="input-box">
+            <span class="details">Starting Date </span>
+            <input type="date" placeholder="Enter date" required id="sdate" name="sdate">
+          </div>
+          <div class="input-box">
+            <span class="details">Ending Date </span>
+            <input type="date" placeholder="Enter date" required id="edate" name="edate">
+          </div>
+          
+          
+          
+          
+        </div>
+        
+        <div class="row">
+            <center>
+        <div class="button1">
+          <input type="submit" value="Submit">
+        </div>
+    </center>
+        <div class="row">
+            <div class="col s12">
+              <center><span class="messagestyle">{{message}}</span></center>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

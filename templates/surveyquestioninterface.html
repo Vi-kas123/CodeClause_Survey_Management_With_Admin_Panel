@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <style>
+      h2{
+          color: #FAEBEFFF
+      }
+      .button1 input{
+        height: 50px;
+        width: 60%;
+        border-radius: 5px;
+        border: none;
+        color: #333D79FF;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #FAEBEFFF;
+      }
+      .button1{
+        margin: 20px 0
+      }
+      .button1 input:hover{
+        /* transform: scale(0.99); */
+       background: #333D79FF;
+       color: #FAEBEFFF;
+        }
+        .messagestyle{
+          font-size: 25px;
+           font-weight: bold;
+             color: #FAEBEFFF;
+
+       }
+    
+        ul.nav {
+            margin:0;
+            padding:0;
+            list-style:none;
+            height:60px; line-height:55px;
+            background:#FAEBEFFF; /* you can change the backgorund color here. */
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:19px;
+            font-weight: bold;
+        }
+        ul.nav li {
+             /* you can change the border color matching to your background color */
+            float:right;
+        }
+        ul.nav a {
+            display:block;
+            padding:0 28px;
+            color: black;
+            text-decoration:none;
+        }
+        ul.nav a:hover,
+        ul.nav li.current a {
+            background: #333D79FF;
+            color: #FAEBEFFF;
+        }
+   </style>
+   <header>
+    <ul class="nav fixed">
+        <li><a href="http://localhost:8000/userinterface" class="nav-link active">Insert User</a></li>
+      <li><a href="http://localhost:8000/displayuser" class="nav-link active">User List</a></li>
+      <li><a href="http://localhost:8000/surveyinterface" class="nav-link active">Insert Survey</a></li>
+      <li><a href="http://localhost:8000/displaysurveyrecord/" class="nav-link active">Survey List</a></li>
+      </ul>
+  </header>
+<body style="background-color: #FAEBEFFF;">
+ <center>
+  <div class="container" style="max-width: 60%;background-color: #333D79FF;height: 85vh;margin-top:30px;border-radius: 30px;">
+    <div class="row">
+        <div class="col-md-12">
+          <label><h2 style="padding-top: 10px;">Question 1</h2></label>
+            <textarea id="q1" style="width:80%;height: 60px;" required></textarea>  
+        </div>
+        <div class="col-md-12">
+          <label><h2>Question 2</h2></label>
+            <textarea id="q2" style="width:80%;height: 60px;" required></textarea>  
+        </div>
+        <div class="col-md-12">
+          <label><h2>Question 3</h2></label>
+            <textarea id="q3" style="width:80%;height: 60px;" required></textarea>  
+        </div>
+        <div class="col-md-12">
+          <label><h2>Question 4</h2></label>
+            <textarea id="q4" style="width:80%;height: 60px;" required></textarea>  
+        </div>
+        <div class="row">
+          <center>
+             <div class="button1">
+                  <div class="col-md-12">
+                       <input type="button" value="Submit" style="font-size: 22px;font-weight: bold" class="submitquestion">
+                  </div>
+             </div>
+          </center>
+       </div>
+       <div class="row">
+        <div class="col s12">
+          <center><span class="messagestyle" id="message">{{message}}</span></center>
+        </div>
+    </div>
+       
+  </div>
+</center>
+<input id="sid" type="hidden">
+</body>
+</html>
+<script>
+  $(document).ready(function() {
+    $('#q1').val(localStorage.getItem("q1"))
+    $('#q2').val(localStorage.getItem("q2"))
+    $('#q3').val(localStorage.getItem("q3"))
+    $('#q4').val(localStorage.getItem("q4"))
+     {% comment %} alert(localStorage.getItem("id")) {% endcomment %}
+     $('.submitquestion').click(function(){
+      {% comment %} alert("ccc")  {% endcomment %}
+        $('#sid').val(localStorage.getItem("id"))
+        {% comment %} alert( $('#sid').val()) {% endcomment %}
+  
+        //alert($('#categoryid').val())
+       $.getJSON('http://localhost:8000/submitsurveyquestion',{surveyid:$('#sid').val(),q1:$("#q1").val(),q2:$("#q2").val(),q3:$("#q3").val(),q4:$("#q4").val()},function(data){
+       if(data.result)
+       {
+         $('#message').html("Question Submitted Successfully..")
+       }
+       else
+       {
+         $('#message').html("Fail to submit Question")
+       }
+    
+       })
+    
+      })
+  })
+</script>

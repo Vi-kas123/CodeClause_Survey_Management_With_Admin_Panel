@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <style>
+      h2{
+          color: #FAEBEFFF
+      }
+      .button1 input{
+        height: 50px;
+        width: 60%;
+        border-radius: 5px;
+        border: none;
+        color: #333D79FF;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #FAEBEFFF;
+      }
+      .button1{
+        margin: 20px 0
+      }
+      .button1 input:hover{
+        /* transform: scale(0.99); */
+       background: #333D79FF;
+       color: #FAEBEFFF;
+        }
+        .messagestyle{
+          font-size: 25px;
+           font-weight: bold;
+             color: #FAEBEFFF;
+
+       }
+
+   </style>
+
+<body style="background-color: #FAEBEFFF;">
+    {% include 'navbar.html' %}
+ <center>
+  <div class="container" style="max-width: 60%;background-color: #333D79FF;height: 50vh;margin-top:120px;border-radius: 30px;">
+    <div class="row">
+        <div class="col-md-12">
+          <label><h2 style="padding-top: 10px;">Question 1</h2></label>
+            <h3 id="q1"></h3>
+             
+        </div>
+        <div class="col-md-12">
+          <label><h2>Question 2</h2></label>
+            <h3 id="q2"></h3>
+        </div>
+        <div class="col-md-12">
+          <label><h2>Question 3</h2></label>
+            <h3 id="q3"></h3>
+              
+        </div>
+        <div class="col-md-12">
+          <label><h2>Question 4</h2></label>
+            <h3 id="q4"></h3>
+             
+        </div>
+      
+
+       
+       
+  </div>
+</center>
+<input id="sid" type="hidden">
+</body>
+</html>
+<script>
+  $(document).ready(function() {
+    $('#q1').html(localStorage.getItem("q1"))
+    $('#q2').html(localStorage.getItem("q2"))
+    $('#q3').html(localStorage.getItem("q3"))
+    $('#q4').html(localStorage.getItem("q4"))
+       
+  })
+</script>
